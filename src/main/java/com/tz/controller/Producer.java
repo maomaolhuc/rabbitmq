@@ -45,7 +45,7 @@ public class Producer {
         // 指定消息 id 为 1
         CorrelationData confirmData = new CorrelationData(IdUtil.simpleUUID());
         String routingKey = "key1";
-        rabbitTemplate.convertAndSend(CONFIRM_EXCHANGE_NAME + "123", routingKey, message + routingKey, confirmData);
+        rabbitTemplate.convertAndSend(CONFIRM_EXCHANGE_NAME, routingKey, message + routingKey, confirmData);
         CorrelationData returnData = new CorrelationData(IdUtil.simpleUUID());
         routingKey = "key2";
         rabbitTemplate.convertAndSend(CONFIRM_EXCHANGE_NAME, routingKey, message + routingKey, returnData);
