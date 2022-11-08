@@ -1,6 +1,5 @@
 package com.tz.conf;
 
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,6 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 /**
  * @author lhucstart
@@ -31,13 +31,10 @@ public class RequestLogAspect {
         }
         Object[] args = proceedingJoinPoint.getArgs();
         Object obj = proceedingJoinPoint.proceed();
-        String reqJson = "";
-        if (ArrayUtil.isNotEmpty(args)) {
-            reqJson = JSONUtil.toJsonStr(args[0]);
-        }
-        String s = JSONUtil.toJsonStr(obj);
-        log.info("reqJson: {}", reqJson);
-        log.info("obj:{}", s);
+        String reqStr = Arrays.toString(args);
+        String objStr = JSONUtil.toJsonStr(obj);
+        log.info("reqJson: {}", reqStr);
+        log.info("obj:{}", objStr);
         return obj;
     }
 
