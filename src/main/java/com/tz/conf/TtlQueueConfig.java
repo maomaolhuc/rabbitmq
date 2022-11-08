@@ -18,13 +18,13 @@ public class TtlQueueConfig {
     public static final String Y_DEAD_LETTER_EXCHANGE = "Y";
     public static final String DEAD_LETTER_QUEUE = "QD";
 
-    //  声明 xExchange
+    //声明 xExchange
     @Bean("xExchange")
     public DirectExchange xExchange() {
         return new DirectExchange(X_EXCHANGE);
     }
 
-    //  声明 xExchange
+    //声明 xExchange
     @Bean("yExchange")
     public DirectExchange yExchange() {
         return new DirectExchange(Y_DEAD_LETTER_EXCHANGE);
